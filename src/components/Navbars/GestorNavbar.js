@@ -11,7 +11,7 @@ import {
   Container,
   Button,
 } from "reactstrap";
-import "../../assets/css/DemoNavbar.css";
+import "../../assets/css/GestorNavbar.css";
 
 const DemoNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,42 +47,15 @@ const DemoNavbar = () => {
       fixed="top"
     >
       <Container>
-        <NavbarBrand tag={Link} to="/">
+        <NavbarBrand >
           <img
             alt="..."
-            src={require("assets/img/brand/argon-react-white.png")}
+            src={require("assets/img/brand/senescyt-logo.png")}
           />
         </NavbarBrand>
-        <NavbarToggler onClick={toggle}>
-          <span className="navbar-toggler-icon" />
-        </NavbarToggler>
+        
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink tag={Link} to="/components">
-                Components
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink tag={Link} to="/examples">
-                Examples
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink tag={Link} to="/profile-page">
-                Profile
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink tag={Link} to="/login-page">
-                Login
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink tag={Link} to="/register-page">
-                Register
-              </NavLink>
-            </NavItem>
             <NavItem>
               <Button color="danger" onClick={handleLogout}>
                 Cerrar Sesión

@@ -1,0 +1,57 @@
+.navbar-main {
+    background: linear-gradient(87deg, #11cdef 0, #1171ef 100%);
+    padding: 1rem 2rem;
+    transition: background 0.5s ease;
+  }
+  
+  .navbar-scrolled {
+    background: #2c3e50 !important;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #fff !important;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #11cdef !important;
+  }
+  
+  .navbar-brand img {
+    height: 40px;
+  }
+  
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar-toggler-icon {
+    color: #fff;
+  }
+  
+  .navbar-collapse {
+    justify-content: flex-end;
+  }
+  
+  .nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #11cdef;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  
+  .nav-link:hover:after {
+    width: 100%;
+    left: 0;
+  }
+  

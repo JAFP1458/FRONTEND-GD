@@ -1,0 +1,161 @@
+/* UserRolesComponent.css */
+
+/* General Container Styling */
+.user-roles-container {
+  background-color: #f4f8fc;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling */
+.user-roles-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-roles-form .form-group {
+  display: flex;
+  align-items: center;
+}
+
+.user-roles-form .form-group label {
+  margin-right: 0.5rem;
+}
+
+.user-roles-form .form-group input {
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+/* Table Styling */
+.user-roles-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.user-roles-table thead {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.user-roles-table thead th {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.user-roles-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.user-roles-table tbody td {
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.user-roles-table tbody tr.hovered-row {
+  background-color: #e9ecef;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.user-roles-table tbody tr:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.01);
+}
+
+/* Button Styling */
+.button-primary {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-primary:hover {
+  background-color: #0056b3;
+}
+
+.button-danger {
+  background-color: #dc3545;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-danger:hover {
+  background-color: #c82333;
+}
+
+.button-secondary {
+  background-color: #6c757d;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Modal Styling */
+.modal-header {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.modal-footer .button-primary {
+  background-color: #007bff;
+}
+
+.modal-footer .button-primary:hover {
+  background-color: #0056b3;
+}
+
+.modal-footer .button-secondary {
+  background-color: #6c757d;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.modal-footer .button-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Estilo para el botón de cerrar sesión */
+.button-secondary {
+  background-color: #ff0000;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-secondary:hover {
+  background-color: #ff0000;
+}

@@ -3,30 +3,46 @@ import { Button, Card, CardBody, FormGroup, Form, Input, InputGroupAddon, InputG
 import { useNavigate } from "react-router-dom";
 import '../../assets/css/custom-styles.css';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode'; // Importa la función jwtDecode correctamente
 
 const Login = ({ setToken }) => {
   const [correoElectronico, setCorreoElectronico] = useState('');
   const [contraseña, setContraseña] = useState('');
+  const [errorMessage, setErrorMessage] = useState(''); // Estado para el mensaje de error
   const navigate = useNavigate();
   const mainRef = useRef(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setErrorMessage(''); // Limpiar el mensaje de error al enviar el formulario
     axios.post('http://localhost:5000/login', { correoElectronico, contraseña })
       .then(response => {
         const token = response.data.token;
         localStorage.setItem('token', token);
         setToken(token);
-        navigate('/landing-page');
+        const decodedToken = jwtDecode(token); // Usa jwtDecode correctamente
+        const userRole = decodedToken.userRole;
+
+        // Redirigir según el rol del usuario
+        if (userRole === 'Gestor') {
+          navigate('/user-roles');
+        } else if (userRole === 'Operador') {
+          navigate('/landing-page');
+        } else {
+          navigate('/login');
+        }
       })
       .catch(error => {
         console.error('There was an error logging in!', error);
         if (error.response) {
           console.error('Error response:', error.response.data);
+          setErrorMessage(error.response.data.message || 'Error en el inicio de sesión');
         } else if (error.request) {
           console.error('Error request:', error.request);
+          setErrorMessage('Error en el servidor. Inténtalo de nuevo más tarde.');
         } else {
           console.error('Error message:', error.message);
+          setErrorMessage('Error en el inicio de sesión');
         }
       });
   };
@@ -39,6 +55,11 @@ const Login = ({ setToken }) => {
             <div className="text-center mb-4">
               <h1>SENESCYT</h1>
             </div>
+            {errorMessage && (
+              <div className="alert alert-danger" role="alert">
+                {errorMessage}
+              </div>
+            )}
             <Form role="form" onSubmit={handleSubmit}>
               <FormGroup className="mb-3">
                 <InputGroup className="input-group-alternative">

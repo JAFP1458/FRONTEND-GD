@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Container, Row, Col, Table, Button } from "reactstrap";
-import DemoNavbar from "components/Navbars/DemoNavbar.js";
+import DemoNavbar from "../../components/Navbars/DemoNavbar.js";
 import axios from 'axios';
+import "../../assets/css/DemoNavbar.css";
 
 const Landing = ({ token }) => {
   const [documents, setDocuments] = useState([]);
@@ -17,61 +18,59 @@ const Landing = ({ token }) => {
   }, []);
 
   const fetchDocuments = () => {
-    const token = localStorage.getItem('token'); // Obtén el token del localStorage
+    const token = localStorage.getItem('token');
     axios.get('http://localhost:5000/documents', {
       headers: {
-        Authorization: `Bearer ${token}` // Asegúrate de incluir 'Bearer '
+        Authorization: `Bearer ${token}`
       }
     })
-    .then(response => {
-      setDocuments(response.data);
-    })
-    .catch(error => {
-      console.error('There was an error fetching the documents!', error);
-      if (error.response) {
-        console.error('Error response:', error.response.data);
-      } else if (error.request) {
-        console.error('Error request:', error.request);
-      } else {
-        console.error('Error message:', error.message);
-      }
-    });
+      .then(response => {
+        setDocuments(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the documents!', error);
+        if (error.response) {
+          console.error('Error response:', error.response.data);
+        } else if (error.request) {
+          console.error('Error request:', error.request);
+        } else {
+          console.error('Error message:', error.message);
+        }
+      });
   };
 
   const downloadDocument = (documentUrl) => {
-    const token = localStorage.getItem('token'); // Obtén el token del localStorage
+    const token = localStorage.getItem('token');
     axios.post('http://localhost:5000/documents/descargar', { documentUrl }, {
       headers: {
-        Authorization: `Bearer ${token}` // Asegúrate de incluir 'Bearer '
+        Authorization: `Bearer ${token}`
       },
       responseType: 'blob'
     })
-    .then(response => {
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      const decodedFileName = decodeURIComponent(documentUrl.split('/').pop());
-      link.href = url;
-      link.setAttribute('download', decodedFileName);
-      document.body.appendChild(link);
-      link.click();
-    })
-    .catch(error => {
-      console.error('There was an error downloading the document!', error);
-    });
+      .then(response => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        const decodedFileName = decodeURIComponent(documentUrl.split('/').pop());
+        link.href = url;
+        link.setAttribute('download', decodedFileName);
+        document.body.appendChild(link);
+        link.click();
+      })
+      .catch(error => {
+        console.error('There was an error downloading the document!', error);
+      });
   };
 
   return (
     <>
       <DemoNavbar />
       <main ref={mainRef}>
-        <Container className="mt-5">
-          <Row>
+        <Container className="pt-lg-7">
+          <Row className="justify-content-center">
             <Col lg="12">
-              <h1 className="display-3 text-center">Documentos</h1>
-              <Table className="mt-4" responsive>
+              <Table className="mt-1" responsive>
                 <thead>
                   <tr>
-                    <th>ID</th>
                     <th>Título</th>
                     <th>Descripción</th>
                     <th>Fecha de Creación</th>
@@ -81,7 +80,6 @@ const Landing = ({ token }) => {
                 <tbody>
                   {documents.map(document => (
                     <tr key={document.documentoid}>
-                      <td>{document.documentoid}</td>
                       <td>{document.titulo}</td>
                       <td>{document.descripcion}</td>
                       <td>{document.fechacreacion}</td>
